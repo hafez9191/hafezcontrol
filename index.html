@@ -1,10 +1,458 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Hafez Control</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 24px;
+
+      font-family: Tahoma, Arial, sans-serif;
+
+      color: #eef7ff;
+
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(0, 210, 255, 0.18),
+          transparent 30%
+        ),
+        linear-gradient(135deg, #08111f, #10243a);
+    }
+
+    .container {
+      width: min(1100px, 100%);
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      padding: 22px 26px;
+      margin-bottom: 24px;
+
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+
+      background: rgba(255, 255, 255, 0.07);
+
+      backdrop-filter: blur(10px);
+
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .brand h1 {
+      margin-bottom: 8px;
+
+      font-size: clamp(26px, 5vw, 42px);
+
+      color: #67e8f9;
+    }
+
+    .brand p {
+      color: #b9cbd9;
+
+      line-height: 1.8;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 10px 15px;
+
+      white-space: nowrap;
+
+      color: #7dffb3;
+
+      background: rgba(31, 211, 123, 0.13);
+
+      border: 1px solid rgba(125, 255, 179, 0.25);
+      border-radius: 999px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+
+      background: #29e37d;
+
+      border-radius: 50%;
+
+      box-shadow: 0 0 12px #29e37d;
+    }
+
+    .section-title {
+      margin: 28px 4px 14px;
+
+      font-size: 19px;
+
+      color: #d9f5ff;
+    }
+
+    .grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+
+      min-height: 170px;
+
+      padding: 22px;
+
+      overflow: hidden;
+
+      background: rgba(255, 255, 255, 0.07);
+
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.20);
+
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+
+      background: rgba(255, 255, 255, 0.10);
+
+      border-color: rgba(103, 232, 249, 0.50);
+    }
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+
+      left: -30px;
+      bottom: -30px;
+
+      width: 90px;
+      height: 90px;
+
+      background: rgba(103, 232, 249, 0.10);
+
+      border-radius: 50%;
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+
+      width: 48px;
+      height: 48px;
+
+      margin-bottom: 16px;
+
+      font-size: 24px;
+
+      background: linear-gradient(135deg, #0891b2, #2563eb);
+
+      border-radius: 14px;
+
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.30);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+
+      font-size: 20px;
+    }
+
+    .card p {
+      font-size: 14px;
+
+      line-height: 1.8;
+
+      color: #b9cbd9;
+    }
+
+    .value {
+      margin-top: 14px;
+
+      font-size: 28px;
+      font-weight: bold;
+
+      color: #7dd3fc;
+    }
+
+    .wide-card {
+      margin-top: 18px;
+      padding: 24px;
+
+      background: rgba(255, 255, 255, 0.07);
+
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.20);
+    }
+
+    .wide-card p {
+      margin-top: 10px;
+
+      line-height: 1.8;
+
+      color: #b9cbd9;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 18px;
+    }
+
+    button,
+    .button {
+      padding: 12px 18px;
+
+      font-size: 15px;
+
+      color: white;
+
+      cursor: pointer;
+
+      text-decoration: none;
+
+      background: linear-gradient(135deg, #0891b2, #2563eb);
+
+      border: none;
+      border-radius: 12px;
+
+      box-shadow: 0 9px 22px rgba(37, 99, 235, 0.28);
+
+      transition: 0.2s;
+    }
+
+    button:hover,
+    .button:hover {
+      transform: scale(1.04);
+
+      filter: brightness(1.12);
+    }
+
+    .secondary {
+      background: rgba(255, 255, 255, 0.10);
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      box-shadow: none;
+    }
+
+    footer {
+      margin-top: 26px;
+
+      text-align: center;
+
+      font-size: 13px;
+
+      color: #7890a4;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        padding: 14px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hello Hafez</h1>
-  <p>This is my first GitHub Page.</p>
+
+  <div class="container">
+
+    <header>
+
+      <div class="brand">
+        <h1>Hafez Control</h1>
+
+        <p>
+          سامانه ساده مانیتورینگ، کنترل و نمایش اطلاعات تجهیزات
+        </p>
+      </div>
+
+      <div class="status">
+        <span class="status-dot"></span>
+
+        سیستم فعال است
+      </div>
+
+    </header>
+
+
+    <h3 class="section-title">
+      وضعیت لحظه‌ای سیستم
+    </h3>
+
+
+    <section class="grid">
+
+      <div class="card">
+
+        <div class="icon">
+          🌡️
+        </div>
+
+        <h2>
+          دمای سیستم
+        </h2>
+
+        <p>
+          نمایش مقدار فعلی سنسور دما
+        </p>
+
+        <div class="value" id="temperature">
+          26.5 °C
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">
+          💧
+        </div>
+
+        <h2>
+          رطوبت
+        </h2>
+
+        <p>
+          آخرین مقدار دریافت‌شده از سنسور رطوبت
+        </p>
+
+        <div class="value" id="humidity">
+          48 %
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">
+          ⚙️
+        </div>
+
+        <h2>
+          وضعیت دستگاه
+        </h2>
+
+        <p>
+          نمایش وضعیت عملکرد موتور یا PLC
+        </p>
+
+        <div class="value" id="machineStatus">
+          RUN
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <h3 class="section-title">
+      کنترل و دسترسی
+    </h3>
+
+
+    <section class="wide-card">
+
+      <h2>
+        پنل فرمان
+      </h2>
+
+      <p>
+        این بخش بعداً می‌تواند به PLC، Modbus، MQTT یا یک سرور آنلاین متصل شود.
+      </p>
+
+
+      <div class="buttons">
+
+        <button onclick="turnOn()">
+          روشن کردن
+        </button>
+
+        <button onclick="turnOff()" class="secondary">
+          خاموش کردن
+        </button>
+
+        <a
+          class="button secondary"
+          href="https://github.com/hafez9191/hafezcontrol"
+          target="_blank"
+        >
+          مشاهده پروژه در GitHub
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+      طراحی و توسعه توسط Hafez — 2026
+    </footer>
+
+  </div>
+
+
+  <script>
+
+    function turnOn() {
+
+      document.getElementById("machineStatus").innerText = "RUN";
+
+      alert("فرمان روشن شدن ارسال شد");
+
+    }
+
+
+    function turnOff() {
+
+      document.getElementById("machineStatus").innerText = "STOP";
+
+      alert("فرمان خاموش شدن ارسال شد");
+
+    }
+
+  </script>
+
 </body>
 </html>
