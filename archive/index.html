@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hafez Calculator</title>
+
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:#101827;
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+}
+
+
+.calculator{
+
+background:#1f2937;
+
+padding:30px;
+
+border-radius:20px;
+
+width:300px;
+
+box-shadow:0 0 30px #000;
+
+}
+
+
+input,select,button{
+
+width:100%;
+
+padding:12px;
+
+margin:8px 0;
+
+font-size:18px;
+
+border-radius:10px;
+
+border:none;
+
+}
+
+
+button{
+
+background:#0891b2;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#2563eb;
+
+}
+
+
+.result{
+
+margin-top:20px;
+
+font-size:25px;
+
+color:#67e8f9;
+
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="calculator">
+
+
+<h2>
+Hafez Calculator
+</h2>
+
+
+<input id="num1" type="number" placeholder="Number 1">
+
+
+<input id="num2" type="number" placeholder="Number 2">
+
+
+<select id="operator">
+
+<option value="+">+</option>
+
+<option value="-">-</option>
+
+<option value="*">*</option>
+
+<option value="/">/</option>
+
+</select>
+
+
+<button onclick="calculate()">
+
+Calculate
+
+</button>
+
+
+<div class="result" id="result">
+
+Result:
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+function calculate(){
+
+let a =
+Number(document.getElementById("num1").value);
+
+
+let b =
+Number(document.getElementById("num2").value);
+
+
+let op =
+document.getElementById("operator").value;
+
+
+let r;
+
+
+if(op=="+")
+r=a+b;
+
+
+if(op=="-")
+r=a-b;
+
+
+if(op=="*")
+r=a*b;
+
+
+if(op=="/")
+r=a/b;
+
+
+document.getElementById("result").innerHTML =
+"Result: "+r;
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
