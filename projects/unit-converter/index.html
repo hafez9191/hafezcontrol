@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Engineering Unit Converter</title>
+
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:#08111f;
+
+color:white;
+
+padding:30px;
+
+}
+
+
+.container{
+
+max-width:500px;
+
+margin:auto;
+
+background:#1f2937;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 0 30px #000;
+
+}
+
+
+h1{
+
+color:#67e8f9;
+
+text-align:center;
+
+}
+
+
+input,select,button{
+
+width:100%;
+
+padding:12px;
+
+margin:8px 0;
+
+font-size:17px;
+
+border-radius:10px;
+
+border:none;
+
+}
+
+
+button{
+
+background:#0891b2;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#2563eb;
+
+}
+
+
+.result{
+
+margin-top:20px;
+
+font-size:25px;
+
+color:#7dd3fc;
+
+text-align:center;
+
+}
+
+
+.box{
+
+margin-top:20px;
+
+padding:15px;
+
+background:#111827;
+
+border-radius:15px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+Engineering Converter
+</h1>
+
+
+
+<div class="box">
+
+<h3>Voltage</h3>
+
+<input id="volt" placeholder="Enter V">
+
+<button onclick="voltage()">
+Convert
+</button>
+
+<p id="vresult"></p>
+
+</div>
+
+
+
+<div class="box">
+
+<h3>Current</h3>
+
+<input id="amp" placeholder="Enter Ampere">
+
+<button onclick="current()">
+Convert
+</button>
+
+<p id="aresult"></p>
+
+</div>
+
+
+
+<div class="box">
+
+<h3>Power</h3>
+
+<input id="power" placeholder="Enter Watt">
+
+<button onclick="powerConvert()">
+Convert
+</button>
+
+<p id="presult"></p>
+
+</div>
+
+
+
+<div class="box">
+
+<h3>Temperature</h3>
+
+<input id="temp" placeholder="Enter Celsius">
+
+<button onclick="temperature()">
+Convert
+</button>
+
+<p id="tresult"></p>
+
+</div>
+
+
+
+</div>
+
+
+
+<script>
+
+
+function voltage(){
+
+let v =
+Number(document.getElementById("volt").value);
+
+document.getElementById("vresult").innerHTML =
+v+" V = "+(v/1000)+" kV";
+
+}
+
+
+
+function current(){
+
+let a =
+Number(document.getElementById("amp").value);
+
+document.getElementById("aresult").innerHTML =
+a+" A = "+(a*1000)+" mA";
+
+}
+
+
+
+function powerConvert(){
+
+let w =
+Number(document.getElementById("power").value);
+
+document.getElementById("presult").innerHTML =
+w+" W = "+(w/1000)+" kW";
+
+}
+
+
+
+function temperature(){
+
+let c =
+Number(document.getElementById("temp").value);
+
+let f =
+(c*9/5)+32;
+
+
+document.getElementById("tresult").innerHTML =
+c+" °C = "+f+" °F";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
