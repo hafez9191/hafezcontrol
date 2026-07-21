@@ -1,1 +1,786 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="نمونه پروژه‌های اتوماسیون صنعتی، PLC، HMI، SCADA، شبکه‌های صنعتی و تابلو برق Arta PLC">
+
+    <title>نمونه‌کارها | Arta PLC</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top right,
+                rgba(82, 44, 230, 0.08),
+                transparent 35%),
+                #f7f8fc;
+
+            color: #111429;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* نوار بالایی */
+
+        .top-line {
+            height: 30px;
+            background: #338ed5;
+        }
+
+        /* هدر */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e7ef;
+        }
+
+        .navbar {
+            max-width: 1400px;
+            min-height: 116px;
+            margin: auto;
+            padding: 20px 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 42px;
+            list-style: none;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: 12px 2px;
+            transition: 0.25s;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 3px;
+
+            width: 0;
+            height: 3px;
+
+            border-radius: 20px;
+            background: #522ce6;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #522ce6;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #522ce6;
+        }
+
+        .start-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 178px;
+            min-height: 60px;
+            padding: 14px 26px;
+
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+
+            border-radius: 40px;
+            background: linear-gradient(135deg, #3f19d0, #6734ef);
+
+            box-shadow:
+                0 13px 30px rgba(82, 44, 230, 0.25);
+
+            transition: 0.25s;
+        }
+
+        .start-button:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 18px 35px rgba(82, 44, 230, 0.32);
+        }
+
+        /* عنوان صفحه */
+
+        .page-hero {
+            max-width: 1300px;
+            margin: auto;
+            padding: 90px 30px 65px;
+            text-align: center;
+        }
+
+        .small-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 8px 18px;
+            margin-bottom: 22px;
+
+            color: #3f19d0;
+            font-size: 15px;
+            font-weight: bold;
+
+            border: 1px solid rgba(82, 44, 230, 0.18);
+            border-radius: 30px;
+            background: rgba(82, 44, 230, 0.06);
+        }
+
+        .small-title::before {
+            content: "";
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #f1df22;
+            box-shadow: 0 0 0 8px rgba(241, 223, 34, 0.18);
+        }
+
+        .page-hero h1 {
+            margin-bottom: 20px;
+
+            font-size: clamp(38px, 6vw, 72px);
+            line-height: 1.35;
+            letter-spacing: -2px;
+        }
+
+        .page-hero h1 span {
+            color: #4720d8;
+        }
+
+        .page-hero p {
+            max-width: 770px;
+            margin: auto;
+
+            color: #656b7e;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        /* لینک سریع دسته‌ها */
+
+        .category-navigation {
+            max-width: 1300px;
+            margin: 0 auto 65px;
+            padding: 0 30px;
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .category-navigation a {
+            padding: 10px 18px;
+
+            color: #282b3d;
+            font-size: 14px;
+            font-weight: bold;
+
+            border: 1px solid #e1e3ec;
+            border-radius: 25px;
+            background: white;
+
+            transition: 0.25s;
+        }
+
+        .category-navigation a:hover {
+            color: white;
+            border-color: #522ce6;
+            background: #522ce6;
+            transform: translateY(-2px);
+        }
+
+        /* محتوای پروژه‌ها */
+
+        .projects-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 0 30px 100px;
+        }
+
+        .project-category {
+            margin-bottom: 90px;
+            scroll-margin-top: 145px;
+        }
+
+        .category-heading {
+            margin-bottom: 28px;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .category-number {
+            display: block;
+            margin-bottom: 5px;
+
+            color: #522ce6;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .category-heading h2 {
+            font-size: clamp(26px, 4vw, 38px);
+            line-height: 1.4;
+        }
+
+        .category-heading p {
+            max-width: 470px;
+            color: #777c8d;
+            font-size: 15px;
+        }
+
+        .category-line {
+            width: 100%;
+            height: 1px;
+            margin-bottom: 30px;
+
+            background: linear-gradient(
+                to left,
+                rgba(82, 44, 230, 0.55),
+                rgba(82, 44, 230, 0)
+            );
+        }
+
+        /* کارت‌ها */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            overflow: hidden;
+            position: relative;
+
+            min-height: 310px;
+
+            border: 1px solid #e5e7ef;
+            border-radius: 24px;
+            background: white;
+
+            box-shadow:
+                0 10px 30px rgba(25, 29, 58, 0.07);
+
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(82, 44, 230, 0.35);
+
+            box-shadow:
+                0 20px 45px rgba(25, 29, 58, 0.13);
+        }
+
+        .project-image {
+            position: relative;
+            height: 190px;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(82, 44, 230, 0.10),
+                    rgba(51, 142, 213, 0.11)
+                );
+        }
+
+        .project-image::before {
+            content: "";
+            position: absolute;
+
+            width: 110px;
+            height: 110px;
+
+            border: 2px dashed rgba(82, 44, 230, 0.25);
+            border-radius: 24px;
+            transform: rotate(12deg);
+        }
+
+        .project-image::after {
+            content: "تصویر پروژه";
+            position: relative;
+            z-index: 2;
+
+            color: #522ce6;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info {
+            padding: 20px 19px 22px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            margin-bottom: 8px;
+
+            color: #522ce6;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .project-info h3 {
+            margin-bottom: 6px;
+            font-size: 17px;
+        }
+
+        .project-info p {
+            color: #797e8e;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* دعوت به همکاری */
+
+        .contact-section {
+            max-width: 1300px;
+            margin: 20px auto 100px;
+            padding: 0 30px;
+        }
+
+        .contact-box {
+            padding: 60px 35px;
+            text-align: center;
+
+            color: white;
+            border-radius: 36px;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(255, 255, 255, 0.16),
+                    transparent 30%
+                ),
+                linear-gradient(135deg, #20105e, #522ce6);
+
+            box-shadow:
+                0 25px 55px rgba(53, 31, 145, 0.25);
+        }
+
+        .contact-box h2 {
+            margin-bottom: 14px;
+            font-size: clamp(28px, 4vw, 45px);
+        }
+
+        .contact-box p {
+            max-width: 650px;
+            margin: 0 auto 28px;
+
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 16px;
+        }
+
+        .contact-box a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 175px;
+            padding: 13px 24px;
+
+            color: #1e1940;
+            font-weight: bold;
+
+            border-radius: 30px;
+            background: #f1df22;
+
+            transition: 0.25s;
+        }
+
+        .contact-box a:hover {
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        /* فوتر */
+
+        footer {
+            padding: 28px 20px;
+            text-align: center;
+
+            color: #777c8d;
+            font-size: 14px;
+
+            border-top: 1px solid #e4e6ee;
+            background: white;
+        }
+
+        /* تبلت */
+
+        @media (max-width: 1150px) {
+            .project-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .nav-links {
+                gap: 24px;
+            }
+        }
+
+        /* موبایل */
+
+        @media (max-width: 800px) {
+            .top-line {
+                height: 12px;
+            }
+
+            .navbar {
+                min-height: auto;
+                padding: 17px 20px;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                width: 100%;
+                gap: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+                font-size: 14px;
+            }
+
+            .start-button {
+                min-height: 48px;
+                min-width: 150px;
+            }
+
+            .page-hero {
+                padding-top: 60px;
+            }
+
+            .category-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .page-hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                min-height: 320px;
+            }
+
+            .project-image {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-line"></div>
+
+    <header>
+        <nav class="navbar">
+
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">خانه</a>
+                </li>
+
+                <li>
+                    <a href="index.html#services">خدمات</a>
+                </li>
+
+                <li>
+                    <a href="projects.html" class="active">
+                        پروژه‌ها
+                    </a>
+                </li>
+
+                <li>
+                    <a href="articles.html">مقالات</a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">درباره من</a>
+                </li>
+
+                <li>
+                    <a href="index.html#contact">تماس</a>
+                </li>
+            </ul>
+
+            <a href="index.html#contact"
+               class="start-button">
+                شروع همکاری
+            </a>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-hero">
+
+            <div class="small-title">
+                تجربه‌های واقعی در صنعت
+            </div>
+
+            <h1>
+                نمونه پروژه‌های
+                <span>Arta PLC</span>
+            </h1>
+
+            <p>
+                مجموعه‌ای از پروژه‌های طراحی، اجرا، توسعه و
+                عیب‌یابی سیستم‌های اتوماسیون صنعتی، کنترل،
+                مانیتورینگ و تجهیزات خطوط تولید
+            </p>
+
+        </section>
+
+        <nav class="category-navigation"
+             id="categoryNavigation">
+        </nav>
+
+        <div class="projects-container"
+             id="projectsContainer">
+        </div>
+
+        <section class="contact-section">
+
+            <div class="contact-box">
+
+                <h2>
+                    پروژه صنعتی شما، پروژه بعدی ما
+                </h2>
+
+                <p>
+                    برای بررسی نیازهای خط تولید، ارتقای سیستم کنترل
+                    یا اجرای یک پروژه جدید با ما در ارتباط باشید.
+                </p>
+
+                <a href="index.html#contact">
+                    درخواست مشاوره
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 Arta PLC — تمامی حقوق محفوظ است.
+    </footer>
+
+    <script>
+        const projectCategories = [
+            {
+                id: "plc",
+                title: "برنامه‌نویسی PLC",
+                description:
+                    "طراحی، توسعه، اصلاح و عیب‌یابی برنامه‌های کنترلی PLC در پروژه‌های صنعتی."
+            },
+            {
+                id: "scada",
+                title: "سیستم‌های SCADA",
+                description:
+                    "طراحی صفحات مانیتورینگ، ثبت اطلاعات، آلارم، گزارش‌گیری و کنترل فرآیند."
+            },
+            {
+                id: "hmi",
+                title: "طراحی HMI",
+                description:
+                    "طراحی رابط‌های صنعتی ساده، کاربردی و مناسب اپراتورهای خطوط تولید."
+            },
+            {
+                id: "network",
+                title: "شبکه‌های صنعتی",
+                description:
+                    "راه‌اندازی و عیب‌یابی شبکه‌های صنعتی و ارتباط تجهیزات کنترلی."
+            },
+            {
+                id: "panel",
+                title: "تابلو برق صنعتی",
+                description:
+                    "طراحی، سیم‌بندی، ارتقا و اصلاح تابلوهای برق و کنترل صنعتی."
+            },
+            {
+                id: "drive",
+                title: "اینورتر و درایو",
+                description:
+                    "راه‌اندازی، تنظیم و کنترل دور موتورهای صنعتی با انواع درایو و اینورتر."
+            },
+            {
+                id: "machine",
+                title: "اتوماسیون ماشین‌آلات",
+                description:
+                    "طراحی سیستم کنترل اختصاصی برای ماشین‌آلات و تجهیزات خطوط تولید."
+            },
+            {
+                id: "commissioning",
+                title: "راه‌اندازی و Commissioning",
+                description:
+                    "تست، راه‌اندازی، تنظیم نهایی و تحویل سیستم‌های اتوماسیون صنعتی."
+            },
+            {
+                id: "maintenance",
+                title: "تعمیر و عیب‌یابی",
+                description:
+                    "شناسایی مشکلات سیستم کنترل و کاهش توقف تجهیزات و خطوط تولید."
+            },
+            {
+                id: "special",
+                title: "پروژه‌های ویژه",
+                description:
+                    "راهکارهای سفارشی، بازسازی سیستم‌های قدیمی و پروژه‌های خاص صنعتی."
+            }
+        ];
+
+        const navigation =
+            document.getElementById("categoryNavigation");
+
+        const container =
+            document.getElementById("projectsContainer");
+
+        projectCategories.forEach((category, categoryIndex) => {
+
+            const navLink =
+                document.createElement("a");
+
+            navLink.href = `#${category.id}`;
+            navLink.textContent = category.title;
+
+            navigation.appendChild(navLink);
+
+            const section =
+                document.createElement("section");
+
+            section.className = "project-category";
+            section.id = category.id;
+
+            let cardsHTML = "";
+
+            for (let projectIndex = 1;
+                 projectIndex <= 5;
+                 projectIndex++) {
+
+                cardsHTML += `
+                    <article class="project-card">
+
+                        <div class="project-image">
+                        </div>
+
+                        <div class="project-info">
+
+                            <span class="project-tag">
+                                ${category.title}
+                            </span>
+
+                            <h3>
+                                پروژه شماره ${projectIndex}
+                            </h3>
+
+                            <p>
+                                توضیحات کوتاه پروژه در این قسمت
+                                قرار خواهد گرفت.
+                            </p>
+
+                        </div>
+
+                    </article>
+                `;
+            }
+
+            section.innerHTML = `
+                <div class="category-heading">
+
+                    <div>
+                        <span class="category-number">
+                            دسته ${String(categoryIndex + 1)
+                                .padStart(2, "0")}
+                        </span>
+
+                        <h2>
+                            ${category.title}
+                        </h2>
+                    </div>
+
+                    <p>
+                        ${category.description}
+                    </p>
+
+                </div>
+
+                <div class="category-line"></div>
+
+                <div class="project-grid">
+                    ${cardsHTML}
+                </div>
+            `;
+
+            container.appendChild(section);
+        });
+    </script>
+
+</body>
+</html>
