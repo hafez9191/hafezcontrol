@@ -847,6 +847,60 @@
             }
         ];
 
+
+        const scadaProjects = [
+            {
+                image:
+                    "assets/projects/project-scada-01.jpg",
+
+                title:
+                    "طراحی سیستم مانیتورینگ SCADA",
+
+                description:
+                    "طراحی صفحات مانیتورینگ برای نمایش وضعیت تجهیزات و فرآیند صنعتی."
+            },
+            {
+                image:
+                    "assets/projects/project-scada-02.jpg",
+
+                title:
+                    "مانیتورینگ خط تولید",
+
+                description:
+                    "نمایش آنلاین وضعیت دستگاه‌ها، سنسورها و بخش‌های مختلف خط تولید."
+            },
+            {
+                image:
+                    "assets/projects/project-scada-03.jpg",
+
+                title:
+                    "ثبت اطلاعات و ترند صنعتی",
+
+                description:
+                    "ثبت داده‌های فرآیند، نمایش نمودارها و بررسی تغییرات پارامترهای تولید."
+            },
+            {
+                image:
+                    "assets/projects/project-scada-04.jpg",
+
+                title:
+                    "سیستم آلارم و گزارش‌گیری",
+
+                description:
+                    "طراحی آلارم‌ها، ثبت رخدادها و گزارش‌گیری برای عیب‌یابی سریع‌تر."
+            },
+            {
+                image:
+                    "assets/projects/project-scada-05.jpg",
+
+                title:
+                    "کنترل و مانیتورینگ مرکزی",
+
+                description:
+                    "ایجاد ارتباط میان PLC و ایستگاه مانیتورینگ برای کنترل متمرکز تجهیزات."
+            }
+        ];
+
         const navigation =
             document.getElementById(
                 "categoryNavigation"
@@ -892,12 +946,15 @@
                     projectIndex++
                 ) {
 
-                    if (category.id === "plc") {
+                    if (
+                        category.id === "plc" ||
+                        category.id === "scada"
+                    ) {
 
                         const project =
-                            plcProjects[
-                                projectIndex
-                            ];
+                            category.id === "plc"
+                                ? plcProjects[projectIndex]
+                                : scadaProjects[projectIndex];
 
                         cardsHTML += `
                             <article class="project-card">
