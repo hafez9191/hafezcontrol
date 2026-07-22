@@ -901,6 +901,50 @@
             }
         ];
 
+
+        const machineProjects = [
+            {
+                image:
+                    "assets/projects/project-machine-01.jpg",
+                title:
+                    "طراحی سیستم کنترل ماشین صنعتی",
+                description:
+                    "طراحی و پیاده‌سازی سیستم کنترل اختصاصی برای ماشین‌آلات صنعتی."
+            },
+            {
+                image:
+                    "assets/projects/project-machine-02.jpg",
+                title:
+                    "ارتقای ماشین‌آلات قدیمی",
+                description:
+                    "بازسازی و بهینه‌سازی سیستم کنترل تجهیزات موجود."
+            },
+            {
+                image:
+                    "assets/projects/project-machine-03.jpg",
+                title:
+                    "کنترل سیکل کاری دستگاه",
+                description:
+                    "کنترل مراحل کاری، سنسورها و عملگرهای ماشین به صورت اتوماتیک."
+            },
+            {
+                image:
+                    "assets/projects/project-machine-04.jpg",
+                title:
+                    "ارتباط تجهیزات و PLC",
+                description:
+                    "ایجاد ارتباط بین PLC، درایوها، سنسورها و تجهیزات جانبی."
+            },
+            {
+                image:
+                    "assets/projects/project-machine-05.jpg",
+                title:
+                    "راه‌اندازی و بهینه‌سازی ماشین",
+                description:
+                    "تست، تنظیم و افزایش بهره‌وری عملکرد ماشین‌آلات صنعتی."
+            }
+        ];
+
         const navigation =
             document.getElementById(
                 "categoryNavigation"
@@ -948,13 +992,16 @@
 
                     if (
                         category.id === "plc" ||
-                        category.id === "scada"
+                        category.id === "scada" ||
+                        category.id === "machine"
                     ) {
 
                         const project =
                             category.id === "plc"
                                 ? plcProjects[projectIndex]
-                                : scadaProjects[projectIndex];
+                                : category.id === "scada"
+                                    ? scadaProjects[projectIndex]
+                                    : machineProjects[projectIndex];
 
                         cardsHTML += `
                             <article class="project-card">
