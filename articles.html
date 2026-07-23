@@ -1,1 +1,648 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="مقالات تخصصی آرتا PLC در حوزه اتوماسیون صنعتی، PLC، سنسورها، شبکه‌های صنعتی و هوشمندسازی خطوط تولید." />
+  <title>مقالات | Arta PLC</title>
 
+  <style>
+    :root {
+      --primary: #4b22e6;
+      --primary-2: #6434f1;
+      --primary-soft: #eeeaff;
+      --navy: #111426;
+      --text: #5f6579;
+      --white: #ffffff;
+      --bg: #f6f7ff;
+      --border: rgba(75, 34, 230, 0.13);
+      --shadow: 0 18px 45px rgba(32, 28, 81, 0.10);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Tahoma, Arial, sans-serif;
+      color: var(--navy);
+      background:
+        radial-gradient(circle at 14% 25%, rgba(93, 55, 238, 0.08), transparent 24%),
+        radial-gradient(circle at 88% 82%, rgba(93, 55, 238, 0.06), transparent 28%),
+        linear-gradient(180deg, #fafaff 0%, #f4f5ff 100%);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .top-line {
+      height: 12px;
+      background: #318dcc;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(17, 20, 38, 0.06);
+    }
+
+    .nav-wrap {
+      min-height: 94px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .nav a {
+      position: relative;
+      padding: 32px 0 25px;
+      transition: color 0.25s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      right: 50%;
+      bottom: 19px;
+      width: 0;
+      height: 3px;
+      border-radius: 10px;
+      background: var(--primary);
+      transform: translateX(50%);
+      transition: width 0.25s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--primary);
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+      width: 100%;
+    }
+
+    .start-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 170px;
+      min-height: 54px;
+      padding: 12px 26px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 13px 28px rgba(75, 34, 230, 0.24);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .start-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 17px 34px rgba(75, 34, 230, 0.31);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .articles-hero {
+      position: relative;
+      padding: 80px 0 36px;
+      text-align: center;
+    }
+
+    .articles-hero::before,
+    .articles-hero::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .articles-hero::before {
+      width: 210px;
+      height: 210px;
+      right: -80px;
+      top: 130px;
+      border: 1px solid rgba(75, 34, 230, 0.20);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 24px rgba(75, 34, 230, 0.035),
+        0 0 0 48px rgba(75, 34, 230, 0.025);
+    }
+
+    .articles-hero::after {
+      width: 150px;
+      height: 150px;
+      left: -55px;
+      bottom: -40px;
+      background-image: radial-gradient(rgba(75,34,230,.24) 1.3px, transparent 1.3px);
+      background-size: 13px 13px;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      margin-bottom: 23px;
+      color: var(--primary);
+      background: rgba(238, 234, 255, 0.82);
+      border: 1px solid rgba(75, 34, 230, 0.16);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .section-badge::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ffd928;
+      box-shadow: 0 0 0 9px rgba(255, 217, 40, 0.17);
+    }
+
+    h1 {
+      max-width: 820px;
+      margin: 0 auto 14px;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.3;
+      letter-spacing: -1.6px;
+    }
+
+    h1 span {
+      color: var(--primary);
+    }
+
+    .hero-text {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text);
+      font-size: 17px;
+    }
+
+    /* Cards */
+    .articles-section {
+      padding: 12px 0 90px;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .article-card {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      overflow: hidden;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(255,255,255,0.85);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease;
+    }
+
+    .article-card:nth-child(4) {
+      grid-column: 2 / span 2;
+    }
+
+    .article-card:nth-child(5) {
+      grid-column: 4 / span 2;
+    }
+
+    .article-card:hover {
+      transform: translateY(-9px);
+      border-color: rgba(75, 34, 230, 0.20);
+      box-shadow: 0 25px 60px rgba(32, 28, 81, 0.16);
+    }
+
+    .article-image {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .article-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(17, 20, 38, 0.19));
+      pointer-events: none;
+    }
+
+    .article-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+
+    .article-card:hover .article-image img {
+      transform: scale(1.055);
+    }
+
+    .article-number {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      color: #fff;
+      background: rgba(75,34,230,0.90);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 14px;
+      font-weight: 900;
+      backdrop-filter: blur(10px);
+    }
+
+    .article-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 25px 24px 24px;
+    }
+
+    .article-tag {
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 5px 11px;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .article-title {
+      margin-bottom: 10px;
+      font-size: 21px;
+      line-height: 1.55;
+    }
+
+    .article-excerpt {
+      margin-bottom: 22px;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      min-height: 46px;
+      margin-top: auto;
+      padding: 9px 18px;
+      color: var(--primary);
+      border: 1.5px solid rgba(75, 34, 230, 0.58);
+      border-radius: 13px;
+      font-size: 14px;
+      font-weight: 900;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .read-more span {
+      font-size: 20px;
+      line-height: 1;
+      transition: transform 0.25s ease;
+    }
+
+    .read-more:hover {
+      color: #fff;
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .read-more:hover span {
+      transform: translateX(-4px);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px 0;
+      color: #777c8e;
+      text-align: center;
+      background: rgba(255,255,255,.7);
+      border-top: 1px solid rgba(17,20,38,.06);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .nav {
+        gap: 20px;
+        font-size: 15px;
+      }
+
+      .articles-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .article-card,
+      .article-card:nth-child(4),
+      .article-card:nth-child(5) {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-wrap {
+        min-height: 76px;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav {
+        position: absolute;
+        top: 76px;
+        right: 18px;
+        left: 18px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 14px;
+        background: rgba(255,255,255,.98);
+        border: 1px solid rgba(17,20,38,.07);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 13px 10px;
+        border-radius: 10px;
+      }
+
+      .nav a::after {
+        display: none;
+      }
+
+      .nav a:hover,
+      .nav a.active {
+        background: var(--primary-soft);
+      }
+
+      .start-btn {
+        min-width: auto;
+        padding-inline: 18px;
+      }
+
+      .articles-hero {
+        padding-top: 58px;
+      }
+
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .article-image {
+        height: 230px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 24px, 1200px);
+      }
+
+      .start-btn {
+        display: none;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .hero-text {
+        font-size: 15px;
+      }
+
+      .article-image {
+        height: 205px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-line"></div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <nav class="nav" id="mainNav" aria-label="منوی اصلی">
+        <a href="index.html">خانه</a>
+        <a href="index.html#services">خدمات</a>
+        <a href="projects.html">پروژه‌ها</a>
+        <a href="articles.html" class="active">مقالات</a>
+        <a href="index.html#about">درباره من</a>
+        <a href="index.html#contact">تماس</a>
+      </nav>
+
+      <a class="start-btn" href="index.html#contact">شروع همکاری</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو" aria-expanded="false">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="articles-hero">
+      <div class="container">
+        <div class="section-badge">مقالات</div>
+        <h1>دانش، تجربه و <span>راهکارهای صنعتی</span></h1>
+        <p class="hero-text">
+          مجموعه‌ای از مقالات کاربردی در حوزه اتوماسیون صنعتی، کنترل، مانیتورینگ،
+          تجهیزات و هوشمندسازی خطوط تولید
+        </p>
+      </div>
+    </section>
+
+    <section class="articles-section">
+      <div class="container">
+        <div class="articles-grid">
+
+          <article class="article-card">
+            <a class="article-image" href="articles/industrial-automation.html" aria-label="اتوماسیون صنعتی چیست؟">
+              <span class="article-number">01</span>
+              <img src="assets/articles/article-automation.png" alt="کارخانه مدرن و سیستم اتوماسیون صنعتی" loading="lazy" />
+            </a>
+            <div class="article-content">
+              <span class="article-tag">اتوماسیون صنعتی</span>
+              <h2 class="article-title">اتوماسیون صنعتی چیست؟</h2>
+              <p class="article-excerpt">
+                با مفهوم اتوماسیون، اجزای اصلی آن و نقش سیستم‌های کنترلی در افزایش بهره‌وری
+                و کاهش هزینه‌های تولید آشنا شوید.
+              </p>
+              <a class="read-more" href="articles/industrial-automation.html">
+                مطالعه مقاله <span>←</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a class="article-image" href="articles/plc.html" aria-label="PLC چیست و چه کاربردی دارد؟">
+              <span class="article-number">02</span>
+              <img src="assets/articles/article-plc.png" alt="کنترلر PLC داخل تابلو برق صنعتی" loading="lazy" />
+            </a>
+            <div class="article-content">
+              <span class="article-tag">کنترل صنعتی</span>
+              <h2 class="article-title">PLC چیست و چه کاربردی دارد؟</h2>
+              <p class="article-excerpt">
+                عملکرد PLC، اجزای اصلی، ورودی و خروجی‌ها و کاربرد آن در کنترل ماشین‌آلات
+                و فرایندهای مختلف صنعتی را بررسی می‌کنیم.
+              </p>
+              <a class="read-more" href="articles/plc.html">
+                مطالعه مقاله <span>←</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a class="article-image" href="articles/industrial-sensors.html" aria-label="انواع سنسورهای صنعتی">
+              <span class="article-number">03</span>
+              <img src="assets/articles/article-sensors.png" alt="مجموعه سنسورهای پرکاربرد صنعتی" loading="lazy" />
+            </a>
+            <div class="article-content">
+              <span class="article-tag">ابزار دقیق</span>
+              <h2 class="article-title">انواع سنسورهای صنعتی</h2>
+              <p class="article-excerpt">
+                معرفی سنسورهای دما، فشار، سطح، مجاورت و نوری؛ همراه با نکات مهم برای
+                انتخاب سنسور مناسب هر کاربرد.
+              </p>
+              <a class="read-more" href="articles/industrial-sensors.html">
+                مطالعه مقاله <span>←</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a class="article-image" href="articles/traditional-vs-smart-production.html" aria-label="خط تولید سنتی یا هوشمند؟">
+              <span class="article-number">04</span>
+              <img src="assets/articles/article-smart-line.png" alt="مقایسه خط تولید سنتی و هوشمند" loading="lazy" />
+            </a>
+            <div class="article-content">
+              <span class="article-tag">هوشمندسازی</span>
+              <h2 class="article-title">خط تولید سنتی یا هوشمند؟</h2>
+              <p class="article-excerpt">
+                خطوط تولید سنتی و هوشمند را از نظر هزینه، دقت، سرعت، نگهداری و انعطاف‌پذیری
+                با یکدیگر مقایسه می‌کنیم.
+              </p>
+              <a class="read-more" href="articles/traditional-vs-smart-production.html">
+                مطالعه مقاله <span>←</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a class="article-image" href="articles/industrial-networks.html" aria-label="شبکه‌های صنعتی چیست؟">
+              <span class="article-number">05</span>
+              <img src="assets/articles/article-networks.png" alt="شبکه صنعتی و تجهیزات متصل به PLC و HMI" loading="lazy" />
+            </a>
+            <div class="article-content">
+              <span class="article-tag">ارتباطات صنعتی</span>
+              <h2 class="article-title">شبکه‌های صنعتی چیست؟</h2>
+              <p class="article-excerpt">
+                با ساختار شبکه‌های صنعتی و پروتکل‌هایی مانند Modbus، Profibus و Profinet
+                و نقش آن‌ها در ارتباط تجهیزات آشنا شوید.
+              </p>
+              <a class="read-more" href="articles/industrial-networks.html">
+                مطالعه مقاله <span>←</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© تمامی حقوق برای Arta PLC محفوظ است.</div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!mainNav.contains(event.target) && !menuToggle.contains(event.target)) {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      }
+    });
+  </script>
+</body>
+</html>
