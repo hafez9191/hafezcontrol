@@ -991,6 +991,16 @@
             {image:"assets/projects/project-network-05.jpg", title:"تست و عیب‌یابی شبکه", description:"بررسی خطاهای ارتباطی و رفع مشکلات شبکه کنترل."}
         ];
 
+
+
+        const panelProjects = [
+            {image:"assets/projects/project-panel-01.jpg", title:"تابلو کنترل و فرمان صنعتی", description:"طراحی و مونتاژ تابلوهای کنترل و فرمان صنعتی."},
+            {image:"assets/projects/project-panel-02.jpg", title:"تابلو PLC و اتوماسیون", description:"مونتاژ و تجهیز تابلوهای PLC و سیستم‌های کنترل."},
+            {image:"assets/projects/project-panel-03.jpg", title:"سیم‌بندی و مونتاژ تابلو", description:"اجرای سیم‌بندی استاندارد و مرتب‌سازی تجهیزات تابلو."},
+            {image:"assets/projects/project-panel-04.jpg", title:"تابلو قدرت و کنترل موتور", description:"طراحی بخش‌های قدرت و کنترل برای تجهیزات صنعتی."},
+            {image:"assets/projects/project-panel-05.jpg", title:"ارتقا و اصلاح تابلوهای قدیمی", description:"بازسازی و بهینه‌سازی تابلوهای موجود صنعتی."}
+        ];
+
         const navigation =
             document.getElementById(
                 "categoryNavigation"
@@ -1041,6 +1051,7 @@
                         category.id === "scada" ||
                         category.id === "maintenance" ||
                         category.id === "network" ||
+                        category.id === "panel" ||
                         category.id === "machine"
                     ) {
 
@@ -1053,7 +1064,9 @@
                                         ? repairProjects[projectIndex]
                                         : category.id === "network"
                                             ? networkProjects[projectIndex]
-                                            : machineProjects[projectIndex];
+                                            : category.id === "panel"
+                                                ? panelProjects[projectIndex]
+                                                : machineProjects[projectIndex];
 
                         cardsHTML += `
                             <article class="project-card">
