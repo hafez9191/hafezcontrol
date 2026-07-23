@@ -745,10 +745,10 @@
                     "طراحی صفحات مانیتورینگ، ثبت اطلاعات، آلارم، گزارش‌گیری و کنترل فرآیند."
             },
             {
-                id: "hmi",
-                title: "طراحی HMI",
+                id: "maintenance",
+                title: "تعمیر و عیب‌یابی",
                 description:
-                    "طراحی رابط‌های صنعتی ساده، کاربردی و مناسب اپراتورهای خطوط تولید."
+                    "شناسایی مشکلات سیستم کنترل و کاهش توقف تجهیزات و خطوط تولید."
             },
             {
                 id: "network",
@@ -773,7 +773,8 @@
                 title: "اتوماسیون ماشین‌آلات",
                 description:
                     "طراحی سیستم کنترل اختصاصی برای ماشین‌آلات و تجهیزات خطوط تولید."
-            },        ];
+            }
+        ];
 
         const plcProjects = [
             {
@@ -926,6 +927,60 @@
             }
         ];
 
+
+        const repairProjects = [
+            {
+                image:
+                    "assets/projects/project-repair-01.jpg",
+
+                title:
+                    "عیب‌یابی سیستم‌های صنعتی",
+
+                description:
+                    "بررسی خطاهای کنترلی، تجهیزات و رفع مشکلات سیستم اتوماسیون."
+            },
+            {
+                image:
+                    "assets/projects/project-repair-02.jpg",
+
+                title:
+                    "تعمیر و اصلاح تجهیزات",
+
+                description:
+                    "رفع اشکالات سخت‌افزاری و نرم‌افزاری تجهیزات صنعتی."
+            },
+            {
+                image:
+                    "assets/projects/project-repair-03.jpg",
+
+                title:
+                    "رفع توقفات خط تولید",
+
+                description:
+                    "تحلیل مشکل و بازگرداندن سریع تجهیزات به مدار تولید."
+            },
+            {
+                image:
+                    "assets/projects/project-repair-04.jpg",
+
+                title:
+                    "عیب‌یابی PLC و کنترل",
+
+                description:
+                    "بررسی برنامه، ورودی خروجی‌ها و ارتباطات سیستم کنترل."
+            },
+            {
+                image:
+                    "assets/projects/project-repair-05.jpg",
+
+                title:
+                    "بهینه‌سازی عملکرد سیستم",
+
+                description:
+                    "اصلاح عملکرد تجهیزات و افزایش پایداری فرآیند."
+            }
+        ];
+
         const navigation =
             document.getElementById(
                 "categoryNavigation"
@@ -974,6 +1029,7 @@
                     if (
                         category.id === "plc" ||
                         category.id === "scada" ||
+                        category.id === "maintenance" ||
                         category.id === "machine"
                     ) {
 
@@ -982,7 +1038,9 @@
                                 ? plcProjects[projectIndex]
                                 : category.id === "scada"
                                     ? scadaProjects[projectIndex]
-                                    : machineProjects[projectIndex];
+                                    : category.id === "maintenance"
+                                        ? repairProjects[projectIndex]
+                                        : machineProjects[projectIndex];
 
                         cardsHTML += `
                             <article class="project-card">
