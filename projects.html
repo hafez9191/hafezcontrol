@@ -981,6 +981,16 @@
             }
         ];
 
+
+
+        const networkProjects = [
+            {image:"assets/projects/project-network-01.jpg", title:"شبکه صنعتی تجهیزات کنترل", description:"ایجاد ارتباط بین تجهیزات کنترلی و زیرساخت شبکه صنعتی."},
+            {image:"assets/projects/project-network-02.jpg", title:"ارتباط PLC و سیستم مانیتورینگ", description:"راه‌اندازی ارتباط بین PLC، HMI و سیستم‌های مانیتورینگ."},
+            {image:"assets/projects/project-network-03.jpg", title:"شبکه‌های Profibus و Profinet", description:"تنظیم و عیب‌یابی شبکه‌های ارتباطی صنعتی."},
+            {image:"assets/projects/project-network-04.jpg", title:"سوئیچ و تجهیزات شبکه صنعتی", description:"راه‌اندازی و بررسی ارتباط تجهیزات در شبکه صنعتی."},
+            {image:"assets/projects/project-network-05.jpg", title:"تست و عیب‌یابی شبکه", description:"بررسی خطاهای ارتباطی و رفع مشکلات شبکه کنترل."}
+        ];
+
         const navigation =
             document.getElementById(
                 "categoryNavigation"
@@ -1030,6 +1040,7 @@
                         category.id === "plc" ||
                         category.id === "scada" ||
                         category.id === "maintenance" ||
+                        category.id === "network" ||
                         category.id === "machine"
                     ) {
 
@@ -1040,7 +1051,9 @@
                                     ? scadaProjects[projectIndex]
                                     : category.id === "maintenance"
                                         ? repairProjects[projectIndex]
-                                        : machineProjects[projectIndex];
+                                        : category.id === "network"
+                                            ? networkProjects[projectIndex]
+                                            : machineProjects[projectIndex];
 
                         cardsHTML += `
                             <article class="project-card">
