@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="مقالات تخصصی آرتا PLC در حوزه اتوماسیون صنعتی، PLC، سنسورها، شبکه‌های صنعتی و هوشمندسازی خطوط تولید." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="مقالات آرتا PLC درباره اتوماسیون صنعتی، PLC، سنسورها، خطوط تولید هوشمند و شبکه‌های صنعتی">
   <title>مقالات | Arta PLC</title>
 
   <style>
@@ -15,10 +15,7 @@
       --text: #5f6579;
       --white: #ffffff;
       --bg: #f6f7ff;
-      --border: rgba(75, 34, 230, 0.13);
       --shadow: 0 18px 45px rgba(32, 28, 81, 0.10);
-      --radius-lg: 26px;
-      --radius-md: 18px;
     }
 
     * {
@@ -39,7 +36,7 @@
         radial-gradient(circle at 14% 25%, rgba(93, 55, 238, 0.08), transparent 24%),
         radial-gradient(circle at 88% 82%, rgba(93, 55, 238, 0.06), transparent 28%),
         linear-gradient(180deg, #fafaff 0%, #f4f5ff 100%);
-      line-height: 1.8;
+      line-height: 1.9;
       overflow-x: hidden;
     }
 
@@ -63,12 +60,11 @@
       margin-inline: auto;
     }
 
-    /* Header */
     .site-header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255, 255, 255, 0.93);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(17, 20, 38, 0.06);
     }
@@ -84,7 +80,7 @@
     .nav {
       display: flex;
       align-items: center;
-      gap: 36px;
+      gap: 34px;
       font-size: 17px;
       font-weight: 700;
     }
@@ -130,12 +126,11 @@
       border-radius: 999px;
       font-weight: 800;
       box-shadow: 0 13px 28px rgba(75, 34, 230, 0.24);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.25s ease;
     }
 
     .start-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 17px 34px rgba(75, 34, 230, 0.31);
     }
 
     .menu-toggle {
@@ -150,40 +145,10 @@
       cursor: pointer;
     }
 
-    /* Hero */
     .articles-hero {
       position: relative;
-      padding: 80px 0 36px;
+      padding: 80px 0 38px;
       text-align: center;
-    }
-
-    .articles-hero::before,
-    .articles-hero::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.4;
-    }
-
-    .articles-hero::before {
-      width: 210px;
-      height: 210px;
-      right: -80px;
-      top: 130px;
-      border: 1px solid rgba(75, 34, 230, 0.20);
-      border-radius: 50%;
-      box-shadow:
-        0 0 0 24px rgba(75, 34, 230, 0.035),
-        0 0 0 48px rgba(75, 34, 230, 0.025);
-    }
-
-    .articles-hero::after {
-      width: 150px;
-      height: 150px;
-      left: -55px;
-      bottom: -40px;
-      background-image: radial-gradient(rgba(75,34,230,.24) 1.3px, transparent 1.3px);
-      background-size: 13px 13px;
     }
 
     .section-badge {
@@ -228,32 +193,26 @@
       font-size: 17px;
     }
 
-    /* Cards */
     .articles-section {
-      padding: 12px 0 90px;
+      padding: 12px 0 70px;
     }
 
     .articles-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 24px;
-      align-items: stretch;
     }
 
     .article-card {
       grid-column: span 2;
       display: flex;
       flex-direction: column;
-      min-height: 100%;
       overflow: hidden;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(255,255,255,0.85);
-      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 26px;
       box-shadow: var(--shadow);
-      transition:
-        transform 0.28s ease,
-        box-shadow 0.28s ease,
-        border-color 0.28s ease;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
     }
 
     .article-card:nth-child(4) {
@@ -266,7 +225,6 @@
 
     .article-card:hover {
       transform: translateY(-9px);
-      border-color: rgba(75, 34, 230, 0.20);
       box-shadow: 0 25px 60px rgba(32, 28, 81, 0.16);
     }
 
@@ -274,14 +232,6 @@
       position: relative;
       height: 220px;
       overflow: hidden;
-    }
-
-    .article-image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 55%, rgba(17, 20, 38, 0.19));
-      pointer-events: none;
     }
 
     .article-image img {
@@ -299,17 +249,15 @@
       top: 16px;
       right: 16px;
       z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
       width: 42px;
       height: 42px;
       color: #fff;
-      background: rgba(75,34,230,0.90);
+      background: rgba(75,34,230,0.91);
       border: 1px solid rgba(255,255,255,.55);
       border-radius: 14px;
       font-weight: 900;
-      backdrop-filter: blur(10px);
     }
 
     .article-content {
@@ -356,13 +304,7 @@
       border-radius: 13px;
       font-size: 14px;
       font-weight: 900;
-      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
-    }
-
-    .read-more span {
-      font-size: 20px;
-      line-height: 1;
-      transition: transform 0.25s ease;
+      transition: 0.25s ease;
     }
 
     .read-more:hover {
@@ -371,24 +313,82 @@
       transform: translateY(-2px);
     }
 
-    .read-more:hover span {
-      transform: translateX(-4px);
+    .full-articles {
+      width: min(1000px, calc(100% - 36px));
+      margin: 10px auto 100px;
     }
 
-    /* Footer */
+    .full-article {
+      scroll-margin-top: 125px;
+      margin-bottom: 56px;
+      padding: 34px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(75,34,230,0.12);
+      border-radius: 28px;
+      box-shadow: 0 18px 48px rgba(32,28,81,0.10);
+    }
+
+    .full-article img {
+      width: 100%;
+      max-height: 450px;
+      margin-bottom: 30px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .full-article h2 {
+      margin-bottom: 16px;
+      font-size: clamp(27px, 4vw, 38px);
+      line-height: 1.5;
+    }
+
+    .full-article h3 {
+      margin: 24px 0 8px;
+      color: var(--primary);
+      font-size: 21px;
+    }
+
+    .full-article p {
+      margin-bottom: 14px;
+      color: var(--text);
+      font-size: 16.5px;
+      line-height: 2.15;
+    }
+
+    .full-article ul {
+      margin: 10px 22px 18px 0;
+      color: var(--text);
+    }
+
+    .full-article li {
+      margin-bottom: 8px;
+    }
+
+    .back-top {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 9px 16px;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
     .footer {
       padding: 30px 0;
       color: #777c8e;
       text-align: center;
-      background: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.72);
       border-top: 1px solid rgba(17,20,38,.06);
       font-size: 14px;
     }
 
-    /* Responsive */
     @media (max-width: 980px) {
       .nav {
-        gap: 20px;
+        gap: 19px;
         font-size: 15px;
       }
 
@@ -424,7 +424,6 @@
         gap: 0;
         padding: 14px;
         background: rgba(255,255,255,.98);
-        border: 1px solid rgba(17,20,38,.07);
         border-radius: 20px;
         box-shadow: var(--shadow);
       }
@@ -435,16 +434,10 @@
 
       .nav a {
         padding: 13px 10px;
-        border-radius: 10px;
       }
 
       .nav a::after {
         display: none;
-      }
-
-      .nav a:hover,
-      .nav a.active {
-        background: var(--primary-soft);
       }
 
       .start-btn {
@@ -463,10 +456,15 @@
       .article-image {
         height: 230px;
       }
+
+      .full-article {
+        padding: 22px;
+      }
     }
 
     @media (max-width: 480px) {
-      .container {
+      .container,
+      .full-articles {
         width: min(100% - 24px, 1200px);
       }
 
@@ -489,25 +487,23 @@
   </style>
 </head>
 
-<body>
+<body id="top">
   <div class="top-line"></div>
 
   <header class="site-header">
     <div class="container nav-wrap">
-      <nav class="nav" id="mainNav" aria-label="منوی اصلی">
+      <nav class="nav" id="mainNav">
         <a href="index.html">خانه</a>
         <a href="index.html#services">خدمات</a>
         <a href="projects.html">پروژه‌ها</a>
-        <a href="articles.html" class="active">مقالات</a>
+        <a href="#top" class="active">مقالات</a>
         <a href="index.html#about">درباره من</a>
         <a href="index.html#contact">تماس</a>
       </nav>
 
       <a class="start-btn" href="index.html#contact">شروع همکاری</a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو" aria-expanded="false">
-        ☰
-      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو">☰</button>
     </div>
   </header>
 
@@ -528,97 +524,224 @@
         <div class="articles-grid">
 
           <article class="article-card">
-            <a class="article-image" href="articles/industrial-automation.html" aria-label="اتوماسیون صنعتی چیست؟">
+            <a class="article-image" href="#article-automation">
               <span class="article-number">01</span>
-              <img src="assets/articles/article-automation.png" alt="کارخانه مدرن و سیستم اتوماسیون صنعتی" loading="lazy" />
+              <img src="assets/articles/article-automation.png" alt="کارخانه مدرن و اتوماسیون صنعتی">
             </a>
             <div class="article-content">
               <span class="article-tag">اتوماسیون صنعتی</span>
               <h2 class="article-title">اتوماسیون صنعتی چیست؟</h2>
-              <p class="article-excerpt">
-                با مفهوم اتوماسیون، اجزای اصلی آن و نقش سیستم‌های کنترلی در افزایش بهره‌وری
-                و کاهش هزینه‌های تولید آشنا شوید.
-              </p>
-              <a class="read-more" href="articles/industrial-automation.html">
-                مطالعه مقاله <span>←</span>
-              </a>
+              <p class="article-excerpt">آشنایی با مفهوم اتوماسیون، مزایا، تجهیزات اصلی و نقش آن در افزایش بهره‌وری تولید.</p>
+              <a class="read-more" href="#article-automation">مطالعه مقاله <span>←</span></a>
             </div>
           </article>
 
           <article class="article-card">
-            <a class="article-image" href="articles/plc.html" aria-label="PLC چیست و چه کاربردی دارد؟">
+            <a class="article-image" href="#article-plc">
               <span class="article-number">02</span>
-              <img src="assets/articles/article-plc.png" alt="کنترلر PLC داخل تابلو برق صنعتی" loading="lazy" />
+              <img src="assets/articles/article-plc.png" alt="PLC داخل تابلو برق صنعتی">
             </a>
             <div class="article-content">
               <span class="article-tag">کنترل صنعتی</span>
               <h2 class="article-title">PLC چیست و چه کاربردی دارد؟</h2>
-              <p class="article-excerpt">
-                عملکرد PLC، اجزای اصلی، ورودی و خروجی‌ها و کاربرد آن در کنترل ماشین‌آلات
-                و فرایندهای مختلف صنعتی را بررسی می‌کنیم.
-              </p>
-              <a class="read-more" href="articles/plc.html">
-                مطالعه مقاله <span>←</span>
-              </a>
+              <p class="article-excerpt">بررسی ساختار PLC، ورودی و خروجی‌ها و نحوه کنترل ماشین‌آلات و فرایندها.</p>
+              <a class="read-more" href="#article-plc">مطالعه مقاله <span>←</span></a>
             </div>
           </article>
 
           <article class="article-card">
-            <a class="article-image" href="articles/industrial-sensors.html" aria-label="انواع سنسورهای صنعتی">
+            <a class="article-image" href="#article-sensors">
               <span class="article-number">03</span>
-              <img src="assets/articles/article-sensors.png" alt="مجموعه سنسورهای پرکاربرد صنعتی" loading="lazy" />
+              <img src="assets/articles/article-sensors.png" alt="انواع سنسورهای صنعتی">
             </a>
             <div class="article-content">
               <span class="article-tag">ابزار دقیق</span>
               <h2 class="article-title">انواع سنسورهای صنعتی</h2>
-              <p class="article-excerpt">
-                معرفی سنسورهای دما، فشار، سطح، مجاورت و نوری؛ همراه با نکات مهم برای
-                انتخاب سنسور مناسب هر کاربرد.
-              </p>
-              <a class="read-more" href="articles/industrial-sensors.html">
-                مطالعه مقاله <span>←</span>
-              </a>
+              <p class="article-excerpt">معرفی سنسورهای دما، فشار، سطح، مجاورت و نوری و نکات انتخاب آن‌ها.</p>
+              <a class="read-more" href="#article-sensors">مطالعه مقاله <span>←</span></a>
             </div>
           </article>
 
           <article class="article-card">
-            <a class="article-image" href="articles/traditional-vs-smart-production.html" aria-label="خط تولید سنتی یا هوشمند؟">
+            <a class="article-image" href="#article-smart-line">
               <span class="article-number">04</span>
-              <img src="assets/articles/article-smart-line.png" alt="مقایسه خط تولید سنتی و هوشمند" loading="lazy" />
+              <img src="assets/articles/article-smart-line.png" alt="مقایسه خط تولید سنتی و هوشمند">
             </a>
             <div class="article-content">
               <span class="article-tag">هوشمندسازی</span>
               <h2 class="article-title">خط تولید سنتی یا هوشمند؟</h2>
-              <p class="article-excerpt">
-                خطوط تولید سنتی و هوشمند را از نظر هزینه، دقت، سرعت، نگهداری و انعطاف‌پذیری
-                با یکدیگر مقایسه می‌کنیم.
-              </p>
-              <a class="read-more" href="articles/traditional-vs-smart-production.html">
-                مطالعه مقاله <span>←</span>
-              </a>
+              <p class="article-excerpt">مقایسه دو روش تولید از نظر هزینه، سرعت، دقت، نگهداری و انعطاف‌پذیری.</p>
+              <a class="read-more" href="#article-smart-line">مطالعه مقاله <span>←</span></a>
             </div>
           </article>
 
           <article class="article-card">
-            <a class="article-image" href="articles/industrial-networks.html" aria-label="شبکه‌های صنعتی چیست؟">
+            <a class="article-image" href="#article-networks">
               <span class="article-number">05</span>
-              <img src="assets/articles/article-networks.png" alt="شبکه صنعتی و تجهیزات متصل به PLC و HMI" loading="lazy" />
+              <img src="assets/articles/article-networks.png" alt="شبکه صنعتی و تجهیزات متصل">
             </a>
             <div class="article-content">
               <span class="article-tag">ارتباطات صنعتی</span>
               <h2 class="article-title">شبکه‌های صنعتی چیست؟</h2>
-              <p class="article-excerpt">
-                با ساختار شبکه‌های صنعتی و پروتکل‌هایی مانند Modbus، Profibus و Profinet
-                و نقش آن‌ها در ارتباط تجهیزات آشنا شوید.
-              </p>
-              <a class="read-more" href="articles/industrial-networks.html">
-                مطالعه مقاله <span>←</span>
-              </a>
+              <p class="article-excerpt">آشنایی با Modbus، Profibus، Profinet و نقش شبکه در ارتباط تجهیزات صنعتی.</p>
+              <a class="read-more" href="#article-networks">مطالعه مقاله <span>←</span></a>
             </div>
           </article>
 
         </div>
       </div>
+    </section>
+
+    <section class="full-articles">
+
+      <article class="full-article" id="article-automation">
+        <img src="assets/articles/article-automation.png" alt="اتوماسیون صنعتی">
+        <h2>اتوماسیون صنعتی چیست؟</h2>
+        <p>
+          اتوماسیون صنعتی یعنی استفاده از تجهیزات کنترلی، نرم‌افزارها، سنسورها و ماشین‌آلات
+          برای انجام خودکار یا نیمه‌خودکار فرایندهای تولید. هدف اصلی آن کاهش خطای انسانی،
+          افزایش سرعت، بالا بردن کیفیت و ایجاد کنترل دقیق‌تر روی خط تولید است.
+        </p>
+        <h3>اجزای اصلی اتوماسیون صنعتی</h3>
+        <p>
+          یک سیستم اتوماسیون معمولاً از PLC، سنسورها، تجهیزات خروجی، درایوها، HMI و شبکه‌های
+          صنعتی تشکیل می‌شود. سنسورها وضعیت فرایند را اندازه‌گیری می‌کنند، PLC تصمیم می‌گیرد
+          و تجهیزات خروجی مانند موتور، شیر برقی یا جک فرمان را اجرا می‌کنند.
+        </p>
+        <h3>مزایای استفاده از اتوماسیون</h3>
+        <ul>
+          <li>کاهش توقف‌های ناخواسته و خطاهای اپراتوری</li>
+          <li>افزایش سرعت و یکنواختی تولید</li>
+          <li>امکان ثبت اطلاعات و بررسی عملکرد دستگاه‌ها</li>
+          <li>افزایش ایمنی کارکنان و تجهیزات</li>
+        </ul>
+        <p>
+          اتوماسیون فقط مخصوص کارخانه‌های بزرگ نیست. حتی یک دستگاه ساده نیز می‌تواند با
+          اضافه شدن چند سنسور، PLC و نمایشگر، دقیق‌تر و قابل‌اعتمادتر کار کند.
+        </p>
+        <a class="back-top" href="#top">بازگشت به بالای صفحه ↑</a>
+      </article>
+
+      <article class="full-article" id="article-plc">
+        <img src="assets/articles/article-plc.png" alt="PLC صنعتی">
+        <h2>PLC چیست و چه کاربردی دارد؟</h2>
+        <p>
+          PLC یا کنترل‌کننده منطقی برنامه‌پذیر، مغز بسیاری از ماشین‌آلات صنعتی است. این تجهیز
+          سیگنال‌های ورودی را از سنسورها و کلیدها دریافت می‌کند، برنامه نوشته‌شده را اجرا
+          می‌کند و سپس خروجی‌هایی مانند موتور، کنتاکتور، شیر برقی و چراغ را کنترل می‌کند.
+        </p>
+        <h3>ورودی و خروجی PLC</h3>
+        <p>
+          ورودی‌ها می‌توانند دیجیتال یا آنالوگ باشند. ورودی دیجیتال وضعیت روشن و خاموش را
+          دریافت می‌کند و ورودی آنالوگ برای مقادیری مانند دما، فشار، سطح و سرعت استفاده می‌شود.
+          خروجی‌ها نیز فرمان لازم را به تجهیزات مختلف می‌فرستند.
+        </p>
+        <h3>چرا PLC جایگزین مدارهای رله‌ای شد؟</h3>
+        <p>
+          در سیستم‌های قدیمی، تغییر عملکرد دستگاه نیازمند سیم‌کشی مجدد بود. در PLC معمولاً
+          با تغییر برنامه می‌توان منطق عملکرد را اصلاح کرد. این موضوع باعث کاهش حجم تابلو،
+          عیب‌یابی آسان‌تر و توسعه سریع‌تر دستگاه می‌شود.
+        </p>
+        <h3>کاربردهای متداول PLC</h3>
+        <ul>
+          <li>کنترل خطوط بسته‌بندی و نوار نقاله</li>
+          <li>کنترل پمپ‌ها، فن‌ها و کمپرسورها</li>
+          <li>کنترل کوره، خشک‌کن و ماشین‌آلات تولیدی</li>
+          <li>ارتباط با HMI، درایو و سیستم مانیتورینگ</li>
+        </ul>
+        <a class="back-top" href="#top">بازگشت به بالای صفحه ↑</a>
+      </article>
+
+      <article class="full-article" id="article-sensors">
+        <img src="assets/articles/article-sensors.png" alt="سنسورهای صنعتی">
+        <h2>انواع سنسورهای صنعتی</h2>
+        <p>
+          سنسورها چشم و گوش سیستم کنترل هستند. بدون سنسور، PLC از وضعیت واقعی دستگاه یا
+          فرایند اطلاعی ندارد. انتخاب درست سنسور روی دقت، ایمنی و پایداری کل سیستم اثر مستقیم دارد.
+        </p>
+        <h3>سنسور مجاورت</h3>
+        <p>
+          برای تشخیص حضور فلز یا جسم بدون تماس مستقیم استفاده می‌شود. سنسورهای القایی برای
+          اجسام فلزی و سنسورهای خازنی برای برخی مواد غیرفلزی نیز کاربرد دارند.
+        </p>
+        <h3>سنسور نوری</h3>
+        <p>
+          با ارسال و دریافت نور، وجود یا عبور قطعه را تشخیص می‌دهد. این سنسورها در خطوط
+          بسته‌بندی، شمارش محصول و تشخیص موقعیت بسیار پرکاربرد هستند.
+        </p>
+        <h3>سنسورهای دما، فشار و سطح</h3>
+        <p>
+          در فرایندهای صنعتی برای اندازه‌گیری شرایط واقعی استفاده می‌شوند و معمولاً خروجی
+          آنالوگ استاندارد مانند 4 تا 20 میلی‌آمپر یا 0 تا 10 ولت دارند.
+        </p>
+        <h3>نکات مهم انتخاب سنسور</h3>
+        <ul>
+          <li>شرایط محیطی مانند دما، رطوبت، گردوغبار و لرزش</li>
+          <li>فاصله تشخیص و سرعت پاسخ</li>
+          <li>نوع خروجی و سازگاری با PLC</li>
+          <li>درجه حفاظت و کیفیت ساخت</li>
+        </ul>
+        <a class="back-top" href="#top">بازگشت به بالای صفحه ↑</a>
+      </article>
+
+      <article class="full-article" id="article-smart-line">
+        <img src="assets/articles/article-smart-line.png" alt="خط تولید سنتی و هوشمند">
+        <h2>خط تولید سنتی یا هوشمند؟</h2>
+        <p>
+          در خط تولید سنتی بخش زیادی از تصمیم‌گیری و کنترل به اپراتور وابسته است. در خط تولید
+          هوشمند، اطلاعات از سنسورها جمع‌آوری می‌شود و تجهیزات کنترلی بر اساس برنامه و شرایط
+          واقعی فرایند تصمیم می‌گیرند.
+        </p>
+        <h3>تفاوت در سرعت و دقت</h3>
+        <p>
+          سیستم هوشمند می‌تواند عملیات تکراری را با سرعت و دقت ثابت انجام دهد. این موضوع باعث
+          کاهش ضایعات و یکنواختی کیفیت محصول می‌شود.
+        </p>
+        <h3>تفاوت در نگهداری</h3>
+        <p>
+          در سیستم سنتی خرابی معمولاً بعد از توقف دستگاه مشخص می‌شود. در سیستم هوشمند می‌توان
+          خطاها، تعداد کارکرد، دما، جریان و وضعیت تجهیزات را ثبت و قبل از خرابی جدی بررسی کرد.
+        </p>
+        <h3>آیا هوشمندسازی همیشه گران است؟</h3>
+        <p>
+          نه لزوماً. هوشمندسازی می‌تواند مرحله‌به‌مرحله انجام شود؛ مثلاً ابتدا مانیتورینگ و ثبت
+          اطلاعات اضافه شود، سپس کنترل بخش‌های مهم و در نهایت ارتباط کامل تجهیزات شکل بگیرد.
+        </p>
+        <a class="back-top" href="#top">بازگشت به بالای صفحه ↑</a>
+      </article>
+
+      <article class="full-article" id="article-networks">
+        <img src="assets/articles/article-networks.png" alt="شبکه‌های صنعتی">
+        <h2>شبکه‌های صنعتی چیست؟</h2>
+        <p>
+          شبکه صنعتی بستری برای تبادل اطلاعات میان PLC، HMI، درایو، سنسورها، سیستم SCADA
+          و سایر تجهیزات است. بدون شبکه، ارتباط تجهیزات معمولاً به سیم‌کشی‌های متعدد و محدود
+          وابسته می‌شود.
+        </p>
+        <h3>Modbus</h3>
+        <p>
+          یکی از پروتکل‌های ساده و پرکاربرد صنعتی است که روی ارتباط سریال یا اترنت اجرا می‌شود
+          و در بسیاری از درایوها، کنترلرها و ابزارهای اندازه‌گیری وجود دارد.
+        </p>
+        <h3>Profibus و Profinet</h3>
+        <p>
+          Profibus در بسیاری از سیستم‌های صنعتی قدیمی و موجود استفاده شده است. Profinet بر
+          پایه اترنت صنعتی کار می‌کند و سرعت و امکانات بیشتری برای سیستم‌های جدید فراهم می‌کند.
+        </p>
+        <h3>چرا طراحی شبکه مهم است؟</h3>
+        <ul>
+          <li>کاهش سیم‌کشی و هزینه نصب</li>
+          <li>دسترسی سریع‌تر به اطلاعات تجهیزات</li>
+          <li>عیب‌یابی و نگهداری آسان‌تر</li>
+          <li>امکان توسعه و اتصال سیستم مانیتورینگ</li>
+        </ul>
+        <p>
+          انتخاب نوع شبکه باید بر اساس تجهیزات موجود، فاصله، سرعت موردنیاز، شرایط محیطی و
+          امکان توسعه آینده انجام شود.
+        </p>
+        <a class="back-top" href="#top">بازگشت به بالای صفحه ↑</a>
+      </article>
+
     </section>
   </main>
 
@@ -632,14 +755,12 @@
 
     menuToggle.addEventListener("click", () => {
       const isOpen = mainNav.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", isOpen);
       menuToggle.textContent = isOpen ? "✕" : "☰";
     });
 
     document.addEventListener("click", (event) => {
       if (!mainNav.contains(event.target) && !menuToggle.contains(event.target)) {
         mainNav.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.textContent = "☰";
       }
     });
