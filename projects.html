@@ -1001,6 +1001,15 @@
             {image:"assets/projects/project-panel-05.jpg", title:"ارتقا و اصلاح تابلوهای قدیمی", description:"بازسازی و بهینه‌سازی تابلوهای موجود صنعتی."}
         ];
 
+
+        const driveProjects = [
+            {image:"assets/projects/project-drive-01.jpg", title:"راه‌اندازی اینورتر و درایو", description:"تنظیم، راه‌اندازی و کنترل درایوهای صنعتی برای موتورهای الکتریکی."},
+            {image:"assets/projects/project-drive-02.jpg", title:"کنترل دور موتور صنعتی", description:"تنظیم پارامترها و بهینه‌سازی عملکرد موتورهای صنعتی."},
+            {image:"assets/projects/project-drive-03.jpg", title:"عیب‌یابی درایو", description:"بررسی خطاها و رفع مشکلات عملکردی اینورترها و درایوها."},
+            {image:"assets/projects/project-drive-04.jpg", title:"ارتباط درایو با سیستم کنترل", description:"ایجاد ارتباط بین PLC و تجهیزات کنترل سرعت موتور."},
+            {image:"assets/projects/project-drive-05.jpg", title:"بهینه‌سازی مصرف انرژی", description:"تنظیم صحیح درایو برای افزایش بهره‌وری و کاهش مصرف انرژی."}
+        ];
+
         const navigation =
             document.getElementById(
                 "categoryNavigation"
@@ -1052,6 +1061,7 @@
                         category.id === "maintenance" ||
                         category.id === "network" ||
                         category.id === "panel" ||
+                        category.id === "drive" ||
                         category.id === "machine"
                     ) {
 
@@ -1066,7 +1076,9 @@
                                             ? networkProjects[projectIndex]
                                             : category.id === "panel"
                                                 ? panelProjects[projectIndex]
-                                                : machineProjects[projectIndex];
+                                                : category.id === "drive"
+                                                    ? driveProjects[projectIndex]
+                                                    : machineProjects[projectIndex];
 
                         cardsHTML += `
                             <article class="project-card">
